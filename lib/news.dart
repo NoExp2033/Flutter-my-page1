@@ -17,8 +17,10 @@ class _NewsPageState extends State<DNewsPage> {
   List<News> newslist = [];
   Future getApi() async {
     var response = await http.get(Uri.parse(
-        'https://newsapi.org/v2/top-headlines?country=th&category=business&apiKey=6ff8189dff8a4008b821ef746ba6ef74'));
+        'https://newsapi.org/v2/top-headlines?country=th&category=business&apiKey=8246f556226641dca53feaf2b479cc0d'));
+    print('sss');
     if (response.statusCode == 200) {
+      print('sss2');
       var responseData = json.decode(response.body);
       List<dynamic> articles = responseData['articles'];
       return newslist = articles.map((e) => News.fromJson(e)).toList();
@@ -43,7 +45,7 @@ class _NewsPageState extends State<DNewsPage> {
         backgroundColor: const Color.fromRGBO(50, 205, 50, 100),
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: Text('Log In Page'),
+        title: Text('News Page'),
       ),
       drawer: navb(),
       body: FutureBuilder(
